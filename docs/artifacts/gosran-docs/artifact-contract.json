@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "name": "GOSRAN public documentation foundation",
+  "kind": "document",
+  "design_system": {
+    "path": "docs/BRAND.md",
+    "required": true
+  },
+  "artifacts": [
+    {
+      "path": "README.md",
+      "required": true
+    },
+    {
+      "path": "docs/PRODUCT.md",
+      "required": true
+    },
+    {
+      "path": "docs/UPSTREAM.md",
+      "required": true
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "required": true
+    },
+    {
+      "path": "DEVELOPMENT.md",
+      "required": true
+    },
+    {
+      "path": "SECURITY.md",
+      "required": true
+    },
+    {
+      "path": "SECURITY_ADVISORY.md",
+      "required": true
+    },
+    {
+      "path": "TECH_STACK.md",
+      "required": true
+    },
+    {
+      "path": "RELEASE.md",
+      "required": true
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "required": true
+    },
+    {
+      "path": "NOTICE",
+      "required": true
+    },
+    {
+      "path": "CHANGELOG.md",
+      "required": true
+    },
+    {
+      "path": "cliff.toml",
+      "required": true
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "required": true
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/01_BUG_REPORT.yml",
+      "required": true
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "required": true
+    }
+  ],
+  "checks": [
+    {
+      "id": "markdown-render",
+      "required": true,
+      "evidence_kind": "render"
+    },
+    {
+      "id": "visual-review",
+      "required": true,
+      "evidence_kind": "visual"
+    },
+    {
+      "id": "link-integrity",
+      "required": true,
+      "evidence_kind": "test"
+    },
+    {
+      "id": "fork-attribution",
+      "required": true,
+      "evidence_kind": "test"
+    },
+    {
+      "id": "claim-boundaries",
+      "required": true,
+      "evidence_kind": "other"
+    },
+    {
+      "id": "diff-integrity",
+      "required": true,
+      "evidence_kind": "test"
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GOSRAN README Render</title>
+<style>
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.62; }
+main { width: min(980px, calc(100% - 48px)); margin: 0 auto; padding: 56px 0 96px; }
+h1, h2, h3 { color: #f0f6fc; line-height: 1.25; letter-spacing: -0.025em; }
+h1 { font-size: 2.5rem; margin: 0.6em 0 0.35em; }
+h2 { margin-top: 2.2em; padding-bottom: 0.35em; border-bottom: 1px solid #30363d; }
+p, li { color: #c9d1d9; }
+a { color: #58a6ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+hr { height: 1px; margin: 36px 0; border: 0; background: #30363d; }
+blockquote { margin: 1.2em 0; padding: 0.2em 1em; border-left: 4px solid #a371f7; background: #161b22; border-radius: 0 6px 6px 0; }
+table { width: 100%; border-collapse: collapse; margin: 1.2em 0; display: table; }
+th, td { padding: 11px 14px; border: 1px solid #30363d; text-align: left; vertical-align: top; }
+th { background: #161b22; color: #f0f6fc; }
+tr:nth-child(2n) { background: rgba(110,118,129,0.06); }
+code { padding: 0.15em 0.35em; border-radius: 4px; background: rgba(110,118,129,0.2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+pre { overflow: auto; padding: 16px; border: 1px solid #30363d; border-radius: 6px; background: #161b22; }
+pre code { padding: 0; background: transparent; }
+@media (max-width: 700px) { main { width: min(100% - 28px, 980px); padding-top: 32px; } h1 { font-size: 2rem; } table { display: block; overflow-x: auto; } }
+</style>
+</head>
+<body><main><!-- Modified by the GOSRAN project from Coolify documentation. -->
+
+<h1 align="center">고스란 · GOSRAN</h1>
+
+<p align="center"><strong>코드부터 운영까지, 상태와 근거가 고스란히.</strong></p>
+
+<p align="center">
+Coolify를 기반으로 운영 판단의 맥락을 더 선명하게 만드는<br>
+operator-first, open-source, self-hosted PaaS
+</p>
+
+<p align="center">
+<a href="./docs/PRODUCT.md">제품 방향</a> ·
+<a href="./docs/UPSTREAM.md">Upstream 관계</a> ·
+<a href="./DEVELOPMENT.md">개발 시작</a> ·
+<a href="./CONTRIBUTING.md">기여하기</a>
+</p>
+
+<hr />
+<h2 id="_1">운영에는 결과보다 맥락이 필요합니다</h2>
+<p>배포가 끝났다는 사실만으로는 부족합니다.</p>
+<p>무엇이 바뀌었는지, 누가 실행했는지, 지금 정상인지, 문제가 생겼다면 어디서부터
+확인해야 하는지까지 이어져야 운영자가 다음 판단을 내릴 수 있습니다.</p>
+<p>고스란은 자주 쓰는 운영 상태와 action을 전면에 두고, 드문 기능은 필요할 때 펼쳐
+보이도록 설계합니다. 기존 capability를 성급히 없애지 않으면서 코드, 배포, server
+상태와 그 근거가 하나의 흐름으로 읽히는 경험을 지향합니다.</p>
+<h2 id="_2">현재 상태</h2>
+<blockquote>
+<p>[!IMPORTANT]
+고스란은 현재 <strong>제품 기반을 세우는 초기 단계</strong>입니다. 이 repository는 동작하는
+Coolify v4 codebase를 상속합니다. 첫 GOSRAN 전용 UI slice는 source에 추가됐지만
+runtime과 browser 검증 전이며, production 제공 기능이나 release로 안내하지 않습니다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>영역</th>
+<th>현재 상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Self-hosted PaaS 기반</td>
+<td><strong>Inherited</strong> — application, database, service, server 관리 기능을 Coolify에서 상속</td>
+</tr>
+<tr>
+<td>GOSRAN operator UX</td>
+<td><strong>In progress · Needs verification</strong> — read-only Action Dashboard 첫 slice를 source에 추가</td>
+</tr>
+<tr>
+<td>GOSRAN installer/image</td>
+<td><strong>Not available</strong> — 독립 production release channel 미구성</td>
+</tr>
+<tr>
+<td>Upstream compatibility</td>
+<td><strong>Active constraint</strong> — route와 capability 보존, 작은 divergence 지향</td>
+</tr>
+</tbody>
+</table>
+<p>지금은 Coolify 설치 script를 실행해도 GOSRAN이 설치되지 않습니다. GOSRAN 전용
+installer와 image가 검증되어 공개되기 전까지 production 설치를 안내하지 않습니다.</p>
+<h2 id="_3">만들고 싶은 운영 경험</h2>
+<table>
+<thead>
+<tr>
+<th>Direction</th>
+<th>운영자가 얻는 답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Action Dashboard</strong></td>
+<td>지금 가장 먼저 확인하고 처리할 것은 무엇인가</td>
+</tr>
+<tr>
+<td><strong>Release Center</strong></td>
+<td>어떤 revision이 누구에 의해 언제 배포되었고 결과는 어땠는가</td>
+</tr>
+<tr>
+<td><strong>Deployment Receipt</strong></td>
+<td>이번 배포의 source, 변경, 검증 근거를 한 장에서 볼 수 있는가</td>
+</tr>
+<tr>
+<td><strong>Quick Ops</strong></td>
+<td>반복 action을 짧고 안전하게 실행할 수 있는가</td>
+</tr>
+<tr>
+<td><strong>Environment Variable Diff</strong></td>
+<td>secret을 노출하지 않고 환경 간 key drift를 알 수 있는가</td>
+</tr>
+<tr>
+<td><strong>Server Guardrails</strong></td>
+<td>실행 전에 위험, 영향 범위와 다음 확인을 알 수 있는가</td>
+</tr>
+</tbody>
+</table>
+<p>세부 방향과 milestone 선택 기준은 <a href="./docs/PRODUCT.md">GOSRAN Product Direction</a>에
+정리합니다.</p>
+<p>Action Dashboard의 첫 slice는 현재 team의 server attention signal과 최근 24시간의 실패한
+application deployment를 read-only로 요약합니다. Source와 test contract는 추가됐지만,
+local runtime과 browser 검증이 끝나기 전에는 <code>Available</code>로 표시하지 않습니다.</p>
+<h2 id="_4">제품 원칙</h2>
+<ul>
+<li><strong>Evidence before assurance</strong> — 막연한 성공 표시보다 revision, time, diff, log,
+  health result를 먼저 보여줍니다.</li>
+<li><strong>Common actions first</strong> — 자주 쓰는 운영 흐름은 짧게, 드문 설정은 필요할 때
+  드러냅니다.</li>
+<li><strong>Guardrails over friction</strong> — 모든 action을 막는 대신 위험과 복구 비용에 비례해
+  보호합니다.</li>
+<li><strong>Compatibility is a feature</strong> — upstream sync와 기존 capability 보존을 제품 품질로
+  다룹니다.</li>
+<li><strong>No invisible automation</strong> — 자동화의 trigger, 대상, 결과와 실패 지점을 추적할 수
+  있어야 합니다.</li>
+</ul>
+<h2 id="built-on-coolify">Built on Coolify</h2>
+<p>고스란은 <a href="https://github.com/coollabsio/coolify">Coolify</a>의 독립적인 community fork입니다.
+Coolify의 개발자와 contributor가 구축한 self-hosted PaaS 기반을 존중하며, 일반적으로
+유용한 fix는 upstream으로 돌아갈 수 있도록 compatibility와 작은 diff를 중요하게
+다룹니다.</p>
+<p>고스란은 Coolify 또는 coolLabs의 공식 배포판이 아니며, 공식 지원이나 보증을 받는다고
+표현하지 않습니다. Coolify를 사용하거나 지원하려면 아래 공식 channel을 이용해 주세요.</p>
+<ul>
+<li><a href="https://github.com/coollabsio/coolify">Coolify repository</a></li>
+<li><a href="https://coolify.io/docs">Coolify documentation</a></li>
+<li><a href="https://coolify.io/sponsorships">Coolify sponsorships</a></li>
+<li><a href="./docs/UPSTREAM.md">GOSRAN과 upstream의 관계</a></li>
+</ul>
+<h2 id="_5">개발 시작</h2>
+<p>현재 GOSRAN은 contributor용 local development만 안내합니다.</p>
+<pre><code class="language-bash">git clone https://github.com/joonheeu/gosran.git
+cd gosran
+spin up
+</code></pre>
+<p>Docker, Spin, local environment 준비와 test command는
+<a href="./DEVELOPMENT.md">DEVELOPMENT.md</a>를 먼저 확인하세요. Repository는 upstream 표준에
+맞춰 frontend package manager로 <code>npm</code>을 유지합니다.</p>
+<h2 id="_6">문서 지도</h2>
+<table>
+<thead>
+<tr>
+<th>문서</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./docs/PRODUCT.md">PRODUCT.md</a></td>
+<td>문제 정의, 경험 방향, 첫 milestone 기준</td>
+</tr>
+<tr>
+<td><a href="./docs/BRAND.md">BRAND.md</a></td>
+<td>이름, 핵심 메시지, status와 copy 원칙</td>
+</tr>
+<tr>
+<td><a href="./docs/UPSTREAM.md">UPSTREAM.md</a></td>
+<td>Coolify attribution, compatibility, issue routing</td>
+</tr>
+<tr>
+<td><a href="./DEVELOPMENT.md">DEVELOPMENT.md</a></td>
+<td>local development와 검증</td>
+</tr>
+<tr>
+<td><a href="./CONTRIBUTING.md">CONTRIBUTING.md</a></td>
+<td>issue, PR, upstream contribution 원칙</td>
+</tr>
+<tr>
+<td><a href="./SECURITY.md">SECURITY.md</a></td>
+<td>취약점 범위와 비공개 신고 경로</td>
+</tr>
+<tr>
+<td><a href="./TECH_STACK.md">TECH_STACK.md</a></td>
+<td>현재 기술 기반</td>
+</tr>
+<tr>
+<td><a href="./RELEASE.md">RELEASE.md</a></td>
+<td>upstream Coolify release 참고 자료</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">기여와 보안</h2>
+<p>GOSRAN-specific issue와 pull request는 언제나 환영합니다. 큰 UI/UX 변경은 구현 전에
+issue에서 운영 문제와 가장 작은 검증 범위를 먼저 맞춥니다.</p>
+<ul>
+<li>기여: <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a></li>
+<li>보안: <a href="./SECURITY.md">SECURITY.md</a></li>
+<li>행동 강령: <a href="./CODE_OF_CONDUCT.md">CODE_OF_CONDUCT.md</a></li>
+</ul>
+<p>Security issue와 secret은 공개 issue에 올리지 마세요.</p>
+<h2 id="license">License</h2>
+<p>Apache License 2.0을 따릅니다. 원본 Coolify의 copyright, license, attribution과 repository
+history를 유지합니다. 자세한 내용은 <a href="./LICENSE">LICENSE</a>, <a href="./NOTICE">NOTICE</a>와
+<a href="./docs/UPSTREAM.md">UPSTREAM.md</a>를 확인하세요.</p></main></body></html>

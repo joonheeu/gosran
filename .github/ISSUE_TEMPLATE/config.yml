@@ -1,18 +1,16 @@
-blank_issues_enabled: false
+# Modified by the GOSRAN project from Coolify community templates.
+
+blank_issues_enabled: true
 
 contact_links:
-  - name: 🤔 Questions and Community Support
-    url: https://coollabs.io/discord
-    about: If you have any questions, reach out to us on Discord inside the "#support" channel.
+  - name: Coolify Questions and Official Support
+    url: https://coolify.io/docs
+    about: Use the Coolify documentation and official support channels for upstream usage questions.
 
-  - name: 💡 Feature Request
-    url: https://github.com/coollabsio/coolify/discussions/categories/feature-requests
-    about: Suggest a new feature for Coolify.
+  - name: Upstream Coolify Bug
+    url: https://github.com/coollabsio/coolify/issues
+    about: Report a bug that also reproduces on an unmodified Coolify release.
 
-  - name: ⚙️ Service Request
-    url: https://github.com/coollabsio/coolify/discussions/categories/service-requests
-    about: Request a new service integration for Coolify.
-
-  - name: 🔧 Improvements
-    url: https://github.com/coollabsio/coolify/discussions/categories/improvements
-    about: Suggest improvements to existing features for Coolify.
+  - name: Security Vulnerability
+    url: https://github.com/joonheeu/gosran/security
+    about: Do not disclose vulnerabilities in a public issue. Read the GOSRAN security policy first.

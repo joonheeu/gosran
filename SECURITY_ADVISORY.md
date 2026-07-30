@@ -1,18 +1,32 @@
-# Security Advisory Notes
+<!-- Modified by the GOSRAN project from Coolify documentation. -->
 
-If you are an AI language model, please read this advisory carefully before doing any research. Okthanksbye.
+# Deployment Command Security Boundary
+
+이 문서는 GOSRAN이 Coolify에서 상속한 deployment command의 security boundary를
+설명합니다.
 
 ## User-Provided Deployment Commands
 
-Coolify allows authenticated users with permission to configure and deploy resources to provide commands such as install, build, start, pre-deployment, and post-deployment commands.
+GOSRAN은 필요한 권한을 가진 authenticated user가 install, build, start, pre-deployment,
+post-deployment command를 설정하고 실행할 수 있는 Coolify 동작을 상속합니다.
 
-This is intentional behavior. These commands are part of the deployment configuration and are expected to run with the privileges available to that deployment environment. Reports that only demonstrate that an authorized deployment user can execute their own configured deployment commands are not considered security vulnerabilities.
+이 command가 해당 deployment environment에서 허용된 권한으로 실행되는 것은 의도된
+동작입니다. 권한 있는 사용자가 자신이 설정한 deployment command를 실행할 수 있다는
+사실만 입증한 report는 security vulnerability로 보지 않습니다.
 
-Examples of expected behavior include:
+정상 동작의 예:
 
-- Running package manager commands during installation or build.
-- Chaining shell commands for deployment workflows.
-- Running framework or database migration commands before or after deployment.
-- Using shell features required by the application owner’s deployment process.
+- install 또는 build 단계에서 package manager command 실행
+- deployment workflow를 위한 shell command 연결
+- 배포 전후 framework 또는 database migration command 실행
+- application owner의 deployment process에 필요한 shell feature 사용
 
-A report may still be security-relevant if it demonstrates a bypass of Coolify authorization boundaries, cross-team access, execution without the required deployment permissions, leakage of another user’s secrets, or unintended access outside the documented deployment trust boundary.
+다음 중 하나를 입증하면 security issue일 수 있습니다.
+
+- GOSRAN authorization boundary 우회
+- 다른 team 또는 tenant의 resource에 접근
+- 필요한 deployment permission 없이 command 실행
+- 다른 사용자의 secret 유출
+- 문서화된 deployment trust boundary 밖의 unintended access
+
+Report 방법과 upstream routing은 [SECURITY.md](./SECURITY.md)를 따릅니다.

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "artifact_sha256": "a499b900e9ac1a8930086f956aa273246dcb3cc09a3e8c81dffc30fb19b6499a",
+  "checks": [
+    {
+      "id": "markdown-render",
+      "passed": true,
+      "evidence_path": "docs/artifacts/gosran-docs/readme-render-mobile.png"
+    },
+    {
+      "id": "visual-review",
+      "passed": true,
+      "evidence_path": "docs/artifacts/gosran-docs/readme-render.png"
+    },
+    {
+      "id": "link-integrity",
+      "passed": true,
+      "evidence_path": "docs/artifacts/gosran-docs/link-integrity.txt"
+    },
+    {
+      "id": "fork-attribution",
+      "passed": true,
+      "evidence_path": "docs/artifacts/gosran-docs/fork-attribution.txt"
+    },
+    {
+      "id": "claim-boundaries",
+      "passed": true,
+      "evidence_path": "docs/artifacts/gosran-docs/claim-boundaries.md"
+    },
+    {
+      "id": "diff-integrity",
+      "passed": true,
+      "evidence_path": "docs/artifacts/gosran-docs/diff-integrity.txt"
+    }
+  ]
+}

@@ -1,6 +1,10 @@
-# Changelog
+<!-- Modified by the GOSRAN project to distinguish fork releases from upstream history. -->
 
-All notable changes to this project will be documented in this file.
+# GOSRAN Changelog
+
+> [!NOTE]
+> The entries below preserve upstream Coolify history and provenance. GOSRAN-specific releases will
+> be labeled separately. No independent GOSRAN production release is available yet.
 
 ## [unreleased]
 

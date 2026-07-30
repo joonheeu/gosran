@@ -1,0 +1,13 @@
+GOSRAN public documentation link integrity
+Date: 2026-07-30
+
+PASS: 36 relative document links resolved to existing local targets.
+PASS: 14 unique external targets were inventoried across governed public documents.
+PASS: Coolify upstream repository opened successfully.
+PASS: Coolify documentation opened successfully.
+PASS: Coolify sponsorship page opened successfully.
+PASS: Coolify security policy opened successfully.
+
+LIMITATION: The public GOSRAN repository URL matches the configured origin remote and the
+user-provided handoff. The web fetch returned a cache miss, so this check does not claim a second
+independent live-page verification for that URL.

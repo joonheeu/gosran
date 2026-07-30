@@ -1,0 +1,20 @@
+GOSRAN documentation diff integrity
+Date: 2026-07-30
+
+PASS: git diff --check reports no whitespace errors.
+PASS: docs/artifacts/gosran-docs/artifact-contract.json parses as JSON.
+PASS: GitHub issue templates parse as YAML mappings.
+PASS: Governed Markdown files render to non-empty HTML.
+PASS: Public-document relative links resolve.
+PASS: LICENSE is unchanged.
+PASS: No secret-bearing env file was read or changed.
+
+SEPARATE WORKTREE CHANGE:
+This checkout also contains the first Action Dashboard PHP, Blade, and Pest test slice. The
+documentation artifact contract records that work as In progress / Needs verification and does not
+claim a PHP test, application render, browser check, deployment, or production change.
+
+KNOWN PRE-EXISTING BOUNDARY:
+The inherited .github/workflows/pr-quality.yaml still targets Coolify's next-branch contribution
+model. This workflow was inspected but not modified in the documentation portion of this checkout.
+CONTRIBUTING.md and the PR template disclose that public contribution automation is not yet adapted.

@@ -1,94 +1,71 @@
-# Citizen Code of Conduct
+<!-- Modified by the GOSRAN project from Coolify documentation. -->
 
-## 1. Purpose
+# GOSRAN Code of Conduct
 
-A primary goal of Coolify is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible. As such, we are committed to providing a friendly, safe and welcoming environment for all, regardless of gender, sexual orientation, ability, ethnicity, socioeconomic status, and religion (or lack thereof).
+## Purpose
 
-This code of conduct outlines our expectations for all those who participate in our community, as well as the consequences for unacceptable behavior.
+고스란 community는 배경, 경력, 정체성과 관계없이 안전하고 존중받는 협업 공간을
+지향합니다. 우리는 좋은 software뿐 아니라 오래 지속할 수 있는 open-source 관계를
+만듭니다.
 
-We invite all those who participate in Coolify to help us create safe and positive experiences for everyone.
+이 행동 강령은 issue, pull request, review, discussion, 실시간 대화와 GOSRAN을 대표하는
+모든 online·offline 공간에 적용됩니다.
 
-## 2. Open [Source/Culture/Tech] Citizenship
+## Expected Behavior
 
-A supplemental goal of this Code of Conduct is to increase open [source/culture/tech] citizenship by encouraging participants to recognize and strengthen the relationships between our actions and their effects on our community.
+- 사람과 관점의 차이를 존중합니다.
+- 비판은 사람의 능력이나 의도가 아니라 코드, evidence, product decision에 집중합니다.
+- 먼저 협업을 시도하고, disagreement를 구체적인 근거와 대안으로 표현합니다.
+- 다른 contributor의 시간과 privacy를 존중합니다.
+- 실수했을 때 책임을 인정하고 수정합니다.
+- 위험하거나 배제적인 상황을 발견하면 maintainer에게 알립니다.
 
-Communities mirror the societies in which they exist and positive action is essential to counteract the many forms of inequality and abuses of power that exist in society.
+## Unacceptable Behavior
 
-If you see someone who is making an extra effort to ensure our community is welcoming, friendly, and encourages all participants to contribute to the fullest extent, we want to know.
+- 성별, 성적 지향, 장애, 외모, 인종, 국적, 종교, 경력 등을 이유로 한 차별과 비하
+- 위협, 폭력적 언어, stalking, intimidation
+- 원치 않는 성적 관심이나 성적인 표현
+- 개인 정보 공개 또는 공개 위협
+- 반복적인 모욕, trolling, discussion 방해
+- 권한이나 maintainer 지위를 이용한 보복
+- 합리적으로 professional environment에 부적절한 행동
 
-## 3. Expected Behavior
+## Enforcement
 
-The following behaviors are expected and requested of all community members:
+Unacceptable behavior를 중단해 달라는 요청을 받으면 즉시 따라야 합니다. Maintainer는
+상황에 따라 content 수정 또는 삭제, warning, 일시적 참여 제한, permanent ban을 적용할
+수 있습니다.
 
- * Participate in an authentic and active way. In doing so, you contribute to the health and longevity of this community.
- * Exercise consideration and respect in your speech and actions.
- * Attempt collaboration before conflict.
- * Refrain from demeaning, discriminatory, or harassing behavior and speech.
- * Be mindful of your surroundings and of your fellow participants. Alert community leaders if you notice a dangerous situation, someone in distress, or violations of this Code of Conduct, even if they seem inconsequential.
- * Remember that community event venues may be shared with members of the public; please be respectful to all patrons of these locations.
+Enforcement decision은 community의 안전, 피해 범위, 반복 여부와 회복 가능성을 기준으로
+합니다.
 
-## 4. Unacceptable Behavior
+## Reporting
 
-The following behaviors are considered harassment and are unacceptable within our community:
+민감한 사건의 상세 내용을 공개 issue에 게시하지 마세요.
 
- * Violence, threats of violence or violent language directed against another person.
- * Sexist, racist, homophobic, transphobic, ableist or otherwise discriminatory jokes and language.
- * Posting or displaying sexually explicit or violent material.
- * Posting or threatening to post other people's personally identifying information ("doxing").
- * Personal insults, particularly those related to gender, sexual orientation, race, religion, or disability.
- * Inappropriate photography or recording.
- * Inappropriate physical contact. You should have someone's consent before touching them.
- * Unwelcome sexual attention. This includes, sexualized comments or jokes; inappropriate touching, groping, and unwelcomed sexual advances.
- * Deliberate intimidation, stalking or following (online or in person).
- * Advocating for, or encouraging, any of the above behavior.
- * Sustained disruption of community events, including talks and presentations.
+- [repository owner](https://github.com/joonheeu)의 GitHub profile에 제공된 private
+  contact channel을 사용합니다.
+- Private channel이 보이지 않으면 incident detail 없이 연락 경로가 필요하다는 사실만
+  maintainer에게 알립니다.
+- Security concern이라면 [SECURITY.md](./SECURITY.md)의 private reporting 절차를
+  사용합니다.
 
-## 5. Weapons Policy
+Report를 받은 maintainer는 필요한 정보만 요청하고, 신고자의 privacy와 안전을
+우선합니다. 이해관계가 있는 maintainer는 해당 판단에서 물러납니다.
 
-No weapons will be allowed at Coolify events, community spaces, or in other spaces covered by the scope of this Code of Conduct. Weapons include but are not limited to guns, explosives (including fireworks), and large knives such as those used for hunting or display, as well as any other item used for the purpose of causing injury or harm to others. Anyone seen in possession of one of these items will be asked to leave immediately, and will only be allowed to return without the weapon. Community members are further expected to comply with all state and local laws on this matter.
+## Scope
 
-## 6. Consequences of Unacceptable Behavior
+이 행동 강령은 contributor, maintainer, sponsor, guest를 포함한 모든 participant에게
+동일하게 적용됩니다. Community 밖의 행동도 participant의 안전과 참여에 직접적인 영향을
+준다면 적용 대상이 될 수 있습니다.
 
-Unacceptable behavior from any community member, including sponsors and those with decision-making authority, will not be tolerated.
+## Attribution
 
-Anyone asked to stop unacceptable behavior is expected to comply immediately.
+이 문서는 upstream Coolify가 사용해 온 Citizen Code of Conduct의 목적과 범위를
+존중하며 GOSRAN community에 맞게 정리했습니다.
 
-If a community member engages in unacceptable behavior, the community organizers may take any action they deem appropriate, up to and including a temporary ban or permanent expulsion from the community without warning (and without refund in the case of a paid event).
-
-## 7. Reporting Guidelines
-
-If you are subject to or witness unacceptable behavior, or have any other concerns, please notify a community organizer as soon as possible. hi@coollabs.io.
-
-
-
-Additionally, community organizers are available to help community members engage with local law enforcement or to otherwise help those experiencing unacceptable behavior feel safe. In the context of in-person events, organizers will also provide escorts as desired by the person experiencing distress.
-
-## 8. Addressing Grievances
-
-If you feel you have been falsely or unfairly accused of violating this Code of Conduct, you should notify coollabsio with a concise description of your grievance. Your grievance will be handled in accordance with our existing governing policies. 
-
-
-
-## 9. Scope
-
-We expect all community participants (contributors, paid or otherwise; sponsors; and other guests) to abide by this Code of Conduct in all community venues--online and in-person--as well as in all one-on-one communications pertaining to community business.
-
-This code of conduct and its related procedures also applies to unacceptable behavior occurring outside the scope of community activities when such behavior has the potential to adversely affect the safety and well-being of community members.
-
-## 10. Contact info
-
-hi@coollabs.io
-
-## 11. License and attribution
-
-The Citizen Code of Conduct is distributed by [Stumptown Syndicate](http://stumptownsyndicate.org) under a [Creative Commons Attribution-ShareAlike license](http://creativecommons.org/licenses/by-sa/3.0/). 
-
-Portions of text derived from the [Django Code of Conduct](https://www.djangoproject.com/conduct/) and the [Geek Feminism Anti-Harassment Policy](http://geekfeminism.wikia.com/wiki/Conference_anti-harassment/Policy).
-
-_Revision 2.3. Posted 6 March 2017._
-
-_Revision 2.2. Posted 4 February 2016._
-
-_Revision 2.1. Posted 23 June 2014._
-
-_Revision 2.0, adopted by the [Stumptown Syndicate](http://stumptownsyndicate.org) board on 10 January 2013. Posted 17 March 2013._
+Citizen Code of Conduct는
+[Stumptown Syndicate](http://stumptownsyndicate.org)가
+[CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)으로 배포합니다.
+원문 일부는 Django Code of Conduct와 Geek Feminism Anti-Harassment Policy에서
+유래했습니다.

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "sealed_at": "2026-07-29T22:15:13.595574+00:00",
+  "contract_sha256": "3d65a6bcae67f27c73bd41714dd035e379b6258196d03f5f71776fa453eed760",
+  "artifact_sha256": "a499b900e9ac1a8930086f956aa273246dcb3cc09a3e8c81dffc30fb19b6499a",
+  "files": {
+    ".github/ISSUE_TEMPLATE/01_BUG_REPORT.yml": "64a934fc31b6ea572aac90aceeedb10a72fb0aedc23457b58804a7b07032fcee",
+    ".github/ISSUE_TEMPLATE/config.yml": "aa718df0d475407ffe1c1dd7d5bc482f0e9fac94fecd4630ed3d70adf60e61ac",
+    ".github/pull_request_template.md": "47126d622bcf70dc0f7700f547a76ad44b951f67bb6d9a8dcebeac720afa65f2",
+    "CHANGELOG.md": "e6ed76784e77529d17df99666aa141b62d7391f3797643ccd10a428e9ca22c1d",
+    "CODE_OF_CONDUCT.md": "8f0734a96cad1aa01cef3ce439a658fd366b21f6e9cfd27aa8c0778ca54eb6fd",
+    "CONTRIBUTING.md": "982e6544efd547d0a896e97dade55f81a79dba2a971d596552f1e039a6b9a065",
+    "DEVELOPMENT.md": "4cd194f9cc84602f803d72962fb40df4370a765de154508af166b5cf2b81931c",
+    "NOTICE": "6bb2c6ae4b790906c5b196fe7eccbef27f70b5cc93e127470012bb2c70b936f3",
+    "README.md": "706bf44a31b5788d1c0da1ee30c5e99ebbe01c8aa712046977a9b68df4d7839d",
+    "RELEASE.md": "141abfae0c579e71161c91ad2758cac2c9133258d3dfe76d8d1d6acdec434b8f",
+    "SECURITY.md": "7073301c706e9c534bb2d70f1ed18446fd2140708c114570bd0e6c8174b28b36",
+    "SECURITY_ADVISORY.md": "987de20efecc6458eb516cb35285130633484f140a1bbf1a4715bbfcb1f6bcd3",
+    "TECH_STACK.md": "52b3f791c9a09246f0877769ac32770350bdad9e44d3915adfc3a8fa4859b71e",
+    "cliff.toml": "046c8a758b1ede5cc18e4dcd5963519746a956f85e81d9681da388408923d5c5",
+    "docs/BRAND.md": "2724631590a416bf1fc7ce0211e5e3a25f82eb417b33d168ddaf2464f42c618d",
+    "docs/PRODUCT.md": "efc844ed7ebb761b61f7dc9c89b746d210f96f4e417d9fba4423489919bc2093",
+    "docs/UPSTREAM.md": "fe349c7cb0fd38bd7c78c9b521a62415b47d1efeab861c0099a8def987791276"
+  }
+}

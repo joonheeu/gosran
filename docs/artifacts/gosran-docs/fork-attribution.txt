@@ -1,0 +1,12 @@
+GOSRAN fork attribution review
+Date: 2026-07-30
+
+PASS: LICENSE remains the inherited Apache License 2.0 text without modification.
+PASS: NOTICE identifies GOSRAN as an independent Coolify community fork.
+PASS: README links to Coolify repository, documentation, sponsorships, LICENSE, NOTICE, and the
+      dedicated upstream relationship document.
+PASS: docs/UPSTREAM.md records origin/upstream roles, compatibility principles, issue routing,
+      support boundaries, and funding intent.
+PASS: Twelve modified inherited documentation or community-template files carry a GOSRAN
+      modification notice.
+PASS: No document claims official Coolify or coolLabs endorsement, support, or warranty.

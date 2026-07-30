@@ -1,212 +1,154 @@
-# Contributing to Coolify
-> "First, thanks for considering contributing to my project. It really means a lot!" - [@andrasbacsai](https://github.com/andrasbacsai)
+<!-- Modified by the GOSRAN project from Coolify documentation. -->
 
-You can ask for guidance anytime on our [Discord server](https://coollabs.io/discord) in the `#contribute` channel.
+# GOSRAN Local Development
 
-To understand the tech stack, please refer to the [Tech Stack](TECH_STACK.md) document.
+고스란은 Coolify v4의 개발 환경과 내부 identifier를 상속합니다. 따라서 local
+container 이름, command, seed account에는 아직 `coolify`가 남아 있습니다. 브랜딩만을
+위해 이 compatibility identifier를 바꾸지 않습니다.
 
+기여 원칙은 [CONTRIBUTING.md](./CONTRIBUTING.md), 기술 기반은
+[TECH_STACK.md](./TECH_STACK.md)를 먼저 확인하세요.
 
-## Table of Contents
-1. [Setup Development Environment](#1-setup-development-environment)
-2. [Verify Installation](#2-verify-installation-optional)
-3. [Fork and Setup Local Repository](#3-fork-and-setup-local-repository)
-4. [Set up Environment Variables](#4-set-up-environment-variables)
-5. [Start Coolify](#5-start-coolify)
-6. [Start Development](#6-start-development)
-7. [Create a Pull Request](#7-create-a-pull-request)
-8. [Development Notes](#development-notes)
-9. [Resetting Development Environment](#resetting-development-environment)
-10. [Additional Contribution Guidelines](#additional-contribution-guidelines)
+## Prerequisites
 
+- Git
+- Docker Engine, Docker Desktop 또는 OrbStack
+- [Spin](https://serversideup.net/open-source/spin/)
+- Node.js와 `npm`
 
-## 1. Setup Development Environment
-Follow the steps below for your operating system:
+OS별 Docker와 Spin 설치는 각 project의 공식 documentation을 따릅니다.
 
-<details>
-<summary><strong>Windows</strong></summary>
+## Clone
 
-1. Install `docker-ce`, Docker Desktop (or similar):
-   - Docker CE (recommended):
-     - Install Windows Subsystem for Linux v2 (WSL2) by following this guide: [Install WSL](https://learn.microsoft.com/en-us/windows/wsl/install?ref=coolify)
-     - After installing WSL2, install Docker CE for your Linux distribution by following this guide: [Install Docker Engine](https://docs.docker.com/engine/install/?ref=coolify)
-     - Make sure to choose the appropriate Linux distribution (e.g., Ubuntu) when following the Docker installation guide
-   - Install Docker Desktop (easier):
-     - Download and install [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/?ref=coolify)
-     - Ensure WSL2 backend is enabled in Docker Desktop settings
+```bash
+git clone https://github.com/joonheeu/gosran.git
+cd gosran
+git remote add upstream https://github.com/coollabsio/coolify.git
+git remote -v
+```
 
-2. Install Spin:
-   - Follow the instructions to install Spin on Windows from the [Spin documentation](https://serversideup.net/open-source/spin/docs/installation/install-windows#download-and-install-spin-into-wsl2?ref=coolify)
+이미 `upstream` remote가 있다면 다시 추가하지 마세요. Remote를 바꾸기 전에는 현재
+fetch/push URL을 먼저 확인합니다.
 
-</details>
+## Environment
 
-<details>
-<summary><strong>MacOS</strong></summary>
+Development template으로 local env file을 만듭니다.
 
-1. Install Orbstack, Docker Desktop (or similar):
-   - Orbstack (recommended, as it is a faster and lighter alternative to Docker Desktop):
-     - Download and install [Orbstack](https://docs.orbstack.dev/quick-start#installation?ref=coolify)
-   - Docker Desktop:
-     - Download and install [Docker Desktop for Mac](https://docs.docker.com/desktop/install/mac-install/?ref=coolify)
+```bash
+cp .env.development.example .env
+```
 
-2. Install Spin:
-   - Follow the instructions to install Spin on MacOS from the [Spin documentation](https://serversideup.net/open-source/spin/docs/installation/install-macos/#download-and-install-spin?ref=coolify)
+`.env`는 local-only secret-bearing file입니다. commit하거나 issue, PR, log에 내용을
+붙이지 마세요. 필요한 key 구조는 `.env.development.example`과 `.env.example`에서
+확인합니다.
 
-</details>
+## Start
 
-<details>
-<summary><strong>Linux</strong></summary>
+```bash
+spin up
+```
 
-1. Install Docker Engine, Docker Desktop (or similar):
-   - Docker Engine (recommended, as there is no VM overhead):
-     - Follow the official [Docker Engine installation guide](https://docs.docker.com/engine/install/?ref=coolify) for your Linux distribution
-   - Docker Desktop:
-     - If you want a GUI, you can use [Docker Desktop for Linux](https://docs.docker.com/desktop/install/linux-install/?ref=coolify)
+기본 endpoint:
 
-2. Install Spin:
-   - Follow the instructions to install Spin on Linux from the [Spin documentation](https://serversideup.net/open-source/spin/docs/installation/install-linux#configure-docker-permissions?ref=coolify)
+| Tool | URL | Note |
+| --- | --- | --- |
+| GOSRAN application | `http://localhost:8000` | 현재 UI 일부에는 Coolify naming이 남아 있음 |
+| Vite | `http://localhost:5173` | frontend asset development |
+| Mailpit | `http://localhost:8025` | local email catcher |
+| Horizon | `http://localhost:8000/horizon` | root login 필요 |
 
-</details>
+기본 seed account:
 
+```text
+Email: test@example.com
+Password: password
+```
 
-## 2. Verify Installation (Optional)
-After installing Docker (or Orbstack) and Spin, verify the installation:
+이 credential은 local development seed에만 사용합니다.
 
-1. Open a terminal or command prompt
-2. Run the following commands:
-   ```bash
-   docker --version
-   spin --version
-   ```
-   You should see version information for both Docker and Spin.
+## Common Commands
 
+### Tests
 
-## 3. Fork and Setup Local Repository
-1. Fork the [Coolify](https://github.com/coollabsio/coolify) repository to your GitHub account.
+```bash
+php artisan test --compact
+php artisan test --compact tests/Feature/SomeTest.php
+php artisan test --compact --filter='descriptive test name'
+```
 
-2. Install a code editor on your machine (choose one):
+새 browser test는 `tests/v4/Browser/`에 작성합니다.
 
-   | Editor | Platform | Download Link |
-   |--------|----------|---------------|
-   | Visual Studio Code (recommended free) | Windows/macOS/Linux | [Download](https://code.visualstudio.com/download?ref=coolify) |
-   | Cursor (recommended but paid) | Windows/macOS/Linux | [Download](https://www.cursor.com/?ref=coolify) |
-   | Zed (very fast) | Windows/macOS/Linux | [Download](https://zed.dev/download?ref=coolify) |
+```bash
+php artisan test --compact tests/v4/Browser/
+php artisan test --compact tests/v4/Browser/LoginTest.php
+```
 
-3. Clone the Coolify Repository from your fork to your local machine
-   - Use `git clone` in the command line, or
-   - Use GitHub Desktop (recommended):
-     - Download and install from [https://desktop.github.com/](https://desktop.github.com/?ref=coolify)
-     - Open GitHub Desktop and login with your GitHub account
-     - Click on `File` -> `Clone Repository` select `github.com` as the repository location, then select your forked Coolify repository, choose the local path and then click `Clone`
+Browser test는 마지막에 `screenshot()`을 호출해 실패를 재현할 evidence를 남깁니다.
 
-4. Open the cloned Coolify Repository in your chosen code editor.
+### Formatting
 
+PHP file을 수정했다면 final verification 전에 실행합니다.
 
-## 4. Set up Environment Variables
-1. In the Code Editor, locate the `.env.development.example` file in the root directory of your local Coolify repository.
-2. Duplicate the `.env.development.example` file and rename the copy to `.env`.
-3. Open the new `.env` file and review its contents. Adjust any environment variables as needed for your development setup.
-4. If you encounter errors during database migrations, update the database connection settings in your `.env` file. Use the IP address or hostname of your PostgreSQL database container. You can find this information by running `docker ps` after executing `spin up`.
-5. Save the changes to your `.env` file.
+```bash
+vendor/bin/pint --dirty --format agent
+```
 
+### Frontend
 
-## 5. Start Coolify
-1. Open a terminal in the local Coolify directory.
-2. Run the following command in the terminal (leave that terminal open):
-   ```bash
-   spin up
-   ```
+이 repository는 upstream 표준에 맞춰 `npm`을 사용합니다.
 
-> [!NOTE]
-> You may see some errors, but don't worry; this is expected.
+```bash
+npm run dev
+npm run build
+```
 
-3. If you encounter permission errors, especially on macOS, use:
-   ```bash
-   sudo spin up
-   ```
+Package manager 전환은 별도 architecture decision 없이 진행하지 않습니다.
 
-> [!NOTE]
-> If you change environment variables afterwards or anything seems broken, press Ctrl + C to stop the process and run `spin up` again.
+### Database
 
+Branch 전환이나 migration 변경 후:
 
-## 6. Start Development
-1. Access your Coolify instance:
-   - URL: `http://localhost:8000`
-   - Login: `test@example.com`
-   - Password: `password`
+```bash
+docker exec -it coolify php artisan migrate
+```
 
-2. Additional development tools:
+Local database를 완전히 초기화해야 할 때만:
 
-   | Tool | URL | Note |
-   |------|-----|------|
-   | Laravel Horizon (scheduler) | `http://localhost:8000/horizon` | Only accessible when logged in as root user |
-   | Mailpit (email catcher) | `http://localhost:8025` | |
-   | Telescope (debugging tool) | `http://localhost:8000/telescope` | Disabled by default |
+```bash
+docker exec -it coolify php artisan migrate:fresh --seed
+```
 
-> [!NOTE]
-> To enable Telescope, add the following to your `.env` file:
-> ```env
-> TELESCOPE_ENABLED=true
-> ```
+`migrate:fresh`는 local development data를 삭제합니다. Production 또는 보존해야 하는
+database에 실행하지 마세요.
 
+## Development Rules
 
-## Development Notes
-When working on Coolify, keep the following in mind:
+- Laravel 12를 Laravel 10 directory structure로 사용합니다.
+- UI는 Livewire 3, Blade, Alpine.js, Tailwind CSS v4 기반입니다.
+- 기존 Action, Service, Livewire component와 helper를 먼저 찾습니다.
+- Eloquent relationship을 사용하고 raw `DB::` query는 피합니다.
+- 모든 behavior change에는 test가 필요합니다.
+- bug fix는 재현 test를 먼저 작성합니다.
+- GOSRAN UI change 전에 기존 token, component, navigation, sibling screen을 조사합니다.
+- `.env`, credential, production server, deployment setting은 작업 범위 밖에서 건드리지
+  않습니다.
 
-1. **Database Migrations**: After switching branches or making changes to the database structure, always run migrations:
-   ```bash
-   docker exec -it coolify php artisan migrate
-   ```
+## Upstream Sync
 
-2. **Resetting Development Setup**: To reset your development setup to a clean database with default values:
-   ```bash
-   docker exec -it coolify php artisan migrate:fresh --seed
-   ```
+```bash
+git fetch upstream
+git status --short --branch
+git log --oneline --decorate --max-count=12 upstream/v4.x
+```
 
-3. **Troubleshooting**: If you encounter unexpected behavior, ensure your database is up-to-date with the latest migrations and if possible reset the development setup to eliminate any environment-specific issues.
+Merge 또는 rebase는 divergence와 local change를 검토한 뒤 선택합니다. 자동 sync나 clean
+merge만으로 compatibility를 주장하지 말고 관련 test와 UI flow를 다시 확인합니다.
 
-> [!IMPORTANT]
-> Forgetting to migrate the database can cause problems, so make it a habit to run migrations after pulling changes or switching branches.
+자세한 원칙은 [docs/UPSTREAM.md](./docs/UPSTREAM.md)를 따릅니다.
 
+## Pull Request
 
-## Resetting Development Environment
-If you encounter issues or break your database or something else, follow these steps to start from a clean slate (works since `v4.0.0-beta.342`):
-
-1. Stop all running containers `ctrl + c`.
-
-2. Remove all Coolify containers:
-   ```bash
-   docker rm coolify coolify-db coolify-redis coolify-realtime coolify-testing-host coolify-minio coolify-vite-1 coolify-mail
-   ```
-
-3. Remove Coolify volumes (it is possible that the volumes have no `coolify` prefix on your machine, in that case remove the prefix from the command):
-   ```bash
-   docker volume rm coolify_dev_backups_data coolify_dev_postgres_data coolify_dev_redis_data coolify_dev_coolify_data coolify_dev_minio_data
-   ```
-
-4. Remove unused images:
-   ```bash
-   docker image prune -a
-   ```
-
-5. Start Coolify again:
-   ```bash
-   spin up
-   ```
-
-6. Run database migrations and seeders:
-   ```bash
-   docker exec -it coolify php artisan migrate:fresh --seed
-   ```
-
-After completing these steps, you'll have a fresh development setup.
-
-> [!IMPORTANT]
-> Always run database migrations and seeders after switching branches or pulling updates to ensure your local database structure matches the current codebase and includes necessary seed data.
-
-
-## Additional Development Guidelines
-### Adding a New Service
-To add a new service to Coolify, please refer to our documentation: [Adding a New Service](https://coolify.io/docs/get-started/contribute/service)
-
-### Development for Documentation
-To contribute to the Coolify documentation, please refer to this guide: [Contributing to the Coolify Documentation](https://coolify.io/docs/get-started/contribute/documentation)
+현재 GOSRAN source 기준은 `v4.x`입니다. 다만 inherited PR Quality workflow는 아직
+`next`만 허용하므로 external PR target은 needs verification 상태입니다. Issue에서 target
+branch를 확인한 뒤 관련 test, formatting, build와 필요한 browser evidence를 PR template에
+기록하세요.

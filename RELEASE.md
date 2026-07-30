@@ -1,4 +1,18 @@
-# Coolify Release Guide
+<!-- Modified by the GOSRAN project from Coolify documentation. -->
+
+# Upstream Coolify Release Reference
+
+> [!IMPORTANT]
+> 이 문서는 GOSRAN release guide가 아닙니다. Fork가 상속한 Coolify build와 release
+> 구조를 이해하고 upstream sync를 검토하기 위해 원문을 유지한 참고 자료입니다.
+> GOSRAN 전용 image, installer, release channel은 아직 구성되지 않았으며, 이 repository
+> 에서 아래 release workflow를 실행하거나 Coolify registry와 CDN을 변경해서는 안 됩니다.
+
+GOSRAN release 절차는 자체 artifact registry, signing, upgrade path, rollback과
+upstream compatibility를 검증한 뒤 별도로 정의합니다. Fork 관계는
+[docs/UPSTREAM.md](./docs/UPSTREAM.md)를 확인하세요.
+
+## Preserved Upstream Guide
 
 This guide outlines the release process for Coolify, intended for developers and those interested in understanding how Coolify releases are managed and deployed.
 
@@ -170,7 +184,7 @@ When a new version is released and a new GitHub release is created, it doesn't i
 
 ## Manually Update/ Downgrade to Specific Versions
 
-> [!CAUTION]  
+> [!CAUTION]
 > Updating to unreleased versions is not recommended and can cause issues.
 
 > [!IMPORTANT]

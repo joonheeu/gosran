@@ -1,0 +1,16 @@
+GOSRAN
+
+This product is an independent community fork of Coolify:
+https://github.com/coollabsio/coolify
+
+GOSRAN preserves the Coolify repository history and the copyright, patent,
+trademark, and attribution notices that apply to the inherited source. Files
+changed for the GOSRAN fork carry a modification notice.
+
+Coolify and its contributors are not responsible for GOSRAN-specific changes,
+releases, support, or security response. GOSRAN is not an official Coolify or
+coolLabs distribution.
+
+Except where otherwise noted, the inherited work and GOSRAN modifications are
+distributed under the Apache License, Version 2.0. See LICENSE for the full
+terms. CODE_OF_CONDUCT.md retains the CC BY-SA 3.0 notice stated in that file.
