@@ -22,6 +22,7 @@ env:
 
 jobs:
   build-push:
+    if: github.repository == 'coollabsio/coolify'
     strategy:
       matrix:
         include:
@@ -70,6 +71,7 @@ jobs:
             coolify.managed=true
 
   merge-manifest:
+    if: github.repository == 'coollabsio/coolify'
     runs-on: ubuntu-24.04
     needs: build-push
     steps:

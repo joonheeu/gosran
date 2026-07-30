@@ -8,6 +8,7 @@ permissions:
 
 jobs:
   cleanup-all-packages:
+    if: github.repository == 'coollabsio/coolify'
     runs-on: ubuntu-latest
     strategy:
       matrix:

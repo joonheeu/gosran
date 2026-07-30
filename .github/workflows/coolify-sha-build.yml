@@ -15,6 +15,7 @@ env:
 
 jobs:
   build-push:
+    if: github.repository == 'coollabsio/coolify'
     strategy:
       matrix:
         include:
@@ -56,6 +57,7 @@ jobs:
             ${{ env.GITHUB_REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}-${{ matrix.arch }}
 
   merge-manifest:
+    if: github.repository == 'coollabsio/coolify'
     runs-on: ubuntu-24.04
     needs: build-push
     steps:
