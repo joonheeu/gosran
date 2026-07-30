@@ -9,9 +9,60 @@
     <div class="subtitle">Your self-hosted infrastructure.</div>
 
     <section class="-mt-2">
+        <div class="pb-2">
+            <h3>Operations</h3>
+            <div class="text-sm text-neutral-500 dark:text-neutral-400">
+                Server signals and failed application deployments from the last 24 hours.
+            </div>
+        </div>
+        @if ($servers->isEmpty())
+            <div class="font-bold dark:text-warning">
+                No servers are configured, so there is no server status to report.
+            </div>
+        @elseif ($serverIssues->isEmpty() && $failedDeployments->isEmpty())
+            <div class="font-bold">
+                No server issues or deployment failures were recorded in the last 24 hours.
+            </div>
+        @else
+            <div
+                class="overflow-hidden border border-neutral-200 rounded dark:border-coolgray-300 divide-y divide-neutral-200 dark:divide-coolgray-300">
+                @foreach ($serverIssues as $issue)
+                    <a wire:key="dashboard-server-issue-{{ $issue['key'] }}"
+                        href="{{ route('server.show', ['server_uuid' => $issue['server_uuid']]) }}"
+                        {{ wireNavigate() }}
+                        class="flex flex-col gap-2 px-4 py-3 hover:bg-neutral-100 dark:hover:bg-coolgray-200 sm:flex-row sm:items-center sm:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coollabs dark:focus-visible:ring-warning">
+                        <x-status-badge :status="$issue['status']" :type="$issue['badge_type']" class="shrink-0" />
+                        <span class="min-w-0 break-words">
+                            <span class="block font-bold">{{ $issue['server_name'] }}</span>
+                            <span class="block text-sm text-neutral-500 dark:text-neutral-400">
+                                {{ $issue['message'] }}
+                            </span>
+                        </span>
+                    </a>
+                @endforeach
+                @foreach ($failedDeployments as $deployment)
+                    <div wire:key="dashboard-failed-deployment-{{ $deployment['id'] }}"
+                        class="flex flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center sm:gap-3">
+                        <x-status-badge status="Failed" type="error" class="shrink-0" />
+                        <div class="min-w-0 break-words">
+                            <span class="font-bold">
+                                {{ $deployment['application_name'] ?: 'Application deployment' }}
+                            </span>
+                            <div class="text-sm text-neutral-500 dark:text-neutral-400">
+                                Failed on {{ $deployment['server_name'] ?: 'unknown server' }}
+                                {{ $deployment['finished_at']->diffForHumans() }}.
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </section>
+
+    <section>
         <div class="flex items-center gap-2 pb-2">
             <h3>Projects</h3>
-@can('create', App\Models\Project::class)
+            @can('create', App\Models\Project::class)
                 @if ($projects->count() > 0)
                     <x-modal-input buttonTitle="Add" title="New Project">
                         <x-slot:content>
@@ -83,7 +134,7 @@
     <section>
         <div class="flex items-center gap-2 pb-2">
             <h3>Servers</h3>
-@can('create', App\Models\Server::class)
+            @can('create', App\Models\Server::class)
                 @if ($servers->count() > 0 && $privateKeys->count() > 0)
                     <a href="{{ route('server.create') }}" {{ wireNavigate() }}
                         class="flex items-center justify-center size-4 text-black dark:text-white rounded hover:bg-coolgray-400 dark:hover:bg-coolgray-300 cursor-pointer">
