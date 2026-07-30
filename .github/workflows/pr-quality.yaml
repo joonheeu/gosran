@@ -19,7 +19,7 @@ jobs:
           max-failures: 4
 
           # PR Branch Checks
-          allowed-target-branches: "next"
+          allowed-target-branches: "v4.x"
           blocked-target-branches: ""
           allowed-source-branches: ""
           blocked-source-branches: |
@@ -62,7 +62,6 @@ jobs:
           allowed-file-extensions: ""
           allowed-paths: ""
           blocked-paths: |
-            README.md
             SECURITY.md
             LICENSE
             CODE_OF_CONDUCT.md
