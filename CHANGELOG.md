@@ -6838,6 +6838,7 @@
 - *(release)* Document SHA image promotion workflow
 - *(release)* Clarify branch strategy and SHA build flow
 - *(project)* Establish GOSRAN foundation
+- Update changelog
 
 ### ⚡ Performance
 
@@ -7794,6 +7795,7 @@
 - Prepare for PR
 - *(pr)* Align quality policy with v4.x
 - *(test)* Add focused pull request validation
+- *(release)* Guard inherited Coolify publishers
 
 ### ◀️ Revert
 
