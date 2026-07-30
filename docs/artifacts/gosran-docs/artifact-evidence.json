@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "artifact_sha256": "a499b900e9ac1a8930086f956aa273246dcb3cc09a3e8c81dffc30fb19b6499a",
+  "artifact_sha256": "f2a469819d4f1bcac44c38de4de0f4a7315f07fe0e0c8786ef5167fe29de346e",
   "checks": [
     {
       "id": "markdown-render",

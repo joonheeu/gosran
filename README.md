@@ -33,13 +33,15 @@ operator-first, open-source, self-hosted PaaS
 
 > [!IMPORTANT]
 > 고스란은 현재 **제품 기반을 세우는 초기 단계**입니다. 이 repository는 동작하는
-> Coolify v4 codebase를 상속합니다. 첫 GOSRAN 전용 UI slice는 source에 추가됐지만
-> runtime과 browser 검증 전이며, production 제공 기능이나 release로 안내하지 않습니다.
+> Coolify v4 codebase를 상속합니다. 첫 GOSRAN 전용 UI slice는 PHP 8.5 focused test와
+> frontend build, 실제 local application browser 검증을 통과했습니다. PR, GitHub Actions,
+> deployment, production은 미검증이므로 production 제공 기능이나 release로 안내하지
+> 않습니다.
 
 | 영역 | 현재 상태 |
 | --- | --- |
 | Self-hosted PaaS 기반 | **Inherited** — application, database, service, server 관리 기능을 Coolify에서 상속 |
-| GOSRAN operator UX | **In progress · Needs verification** — read-only Action Dashboard 첫 slice를 source에 추가 |
+| GOSRAN operator UX | **In progress · Needs verification** — source와 PHP 8.5 focused test/build, local application browser 확인 |
 | GOSRAN installer/image | **Not available** — 독립 production release channel 미구성 |
 | Upstream compatibility | **Active constraint** — route와 capability 보존, 작은 divergence 지향 |
 
@@ -61,8 +63,12 @@ installer와 image가 검증되어 공개되기 전까지 production 설치를 �
 정리합니다.
 
 Action Dashboard의 첫 slice는 현재 team의 server attention signal과 최근 24시간의 실패한
-application deployment를 read-only로 요약합니다. Source와 test contract는 추가됐지만,
-local runtime과 browser 검증이 끝나기 전에는 `Available`로 표시하지 않습니다.
+application deployment를 read-only로 요약합니다. PHP 8.5.8에서 focused Pest test와
+실제 `npm ci`/Vite build는 통과했습니다. Matching Chromium을 사용한 focused browser
+smoke는 실제 Dashboard 문구까지 1 test, 2 assertions로 통과했고 전체 Dashboard browser
+test도 5 tests, 20 assertions와 5 screenshots를 남겼습니다. 이 local application proof를
+실제 PR, GitHub Actions, deployment 또는 production 검증으로 확대해 해석하지 않으며,
+현재 상태는 계속 `In progress · Needs verification`입니다.
 
 ## 제품 원칙
 

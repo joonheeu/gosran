@@ -23,7 +23,9 @@
 - 고스란은 [Coolify](https://github.com/coollabsio/coolify)의 독립적인 community fork다.
 - 현재 기능 기반과 runtime 대부분은 Coolify v4에서 상속한다.
 - GOSRAN 전용 production image, installer, managed cloud는 아직 제공하지 않는다.
-- Action Dashboard의 첫 read-only slice는 source에 추가됐지만 runtime 검증 전이므로
+- Action Dashboard의 첫 read-only slice는 source와 focused local Pest test/frontend
+  build를 PHP 8.5에서 확인했고 실제 local application browser test도 Dashboard 문구와
+  screenshots까지 통과했다. PR, deployment, production은 미검증이므로
   `In progress · Needs verification`으로 표현한다.
 - Release Center, deployment receipt, quick ops, environment variable diff, server guardrail은
   제품 방향이며 현재 제공 기능으로 표현하지 않는다.
@@ -57,7 +59,8 @@
 | Inherited | Coolify 기반에서 유지되는 기능 또는 구조 |
 | In progress | 구현 중이며 완료를 주장할 수 없는 작업 |
 | Direction | 탐색 중인 제품 방향. 일정이나 제공을 약속하지 않음 |
-| Needs verification | 코드 또는 문서만 확인했고 실제 환경 증거가 부족함 |
+| Locally verified | 이름을 밝힌 focused test 또는 build가 명시한 local 환경에서 통과함 |
+| Needs verification | target runtime, 실제 browser, PR 또는 production 등 남은 증거가 있음 |
 
 `Direction`을 `Available`처럼 쓰지 않는다. build 성공을 production 배포 증거로 쓰지 않는다.
 로컬 검증을 실제 server, provider, browser 또는 migration 검증과 혼동하지 않는다.

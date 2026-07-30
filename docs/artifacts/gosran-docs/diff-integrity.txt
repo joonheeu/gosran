@@ -9,12 +9,15 @@ PASS: Public-document relative links resolve.
 PASS: LICENSE is unchanged.
 PASS: No secret-bearing env file was read or changed.
 
-SEPARATE WORKTREE CHANGE:
-This checkout also contains the first Action Dashboard PHP, Blade, and Pest test slice. The
-documentation artifact contract records that work as In progress / Needs verification and does not
-claim a PHP test, application render, browser check, deployment, or production change.
+SEPARATE WORKTREE CHANGES:
+This checkout also contains pending workflow, Deployment Show authorization, helper, and regression
+test changes outside the documentation lane. The documentation artifact records PHP 8.5.8 Composer,
+Pint, focused Pest, npm ci, Vite build, and real local application browser results as scoped
+evidence. It does not claim an actual PR or GitHub Actions run, deployment, or production proof.
 
-KNOWN PRE-EXISTING BOUNDARY:
-The inherited .github/workflows/pr-quality.yaml still targets Coolify's next-branch contribution
-model. This workflow was inspected but not modified in the documentation portion of this checkout.
-CONTRIBUTING.md and the PR template disclose that public contribution automation is not yet adapted.
+KNOWN INTEGRATION BOUNDARY:
+The pending .github/workflows/pr-quality.yaml change targets v4.x, passed actionlint 1.7.12 and its
+branch contract, and is outside the documentation lane. All 15 workflows parse, but whole-repository
+actionlint retains pre-existing SC2086 warnings in seven unrelated workflows. No actual PR or GitHub
+Actions run verifies the change. CONTRIBUTING.md and the PR template remain conservative until the
+parent decides how to integrate that separate lane.
