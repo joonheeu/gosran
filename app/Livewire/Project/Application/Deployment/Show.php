@@ -47,7 +47,9 @@ class Show extends Component
         if (! $application) {
             return redirect()->route('dashboard');
         }
-        $application_deployment_queue = ApplicationDeploymentQueue::where('deployment_uuid', $deploymentUuid)->first();
+        $application_deployment_queue = $application->deployment_queue()
+            ->where('deployment_uuid', $deploymentUuid)
+            ->first();
         if (! $application_deployment_queue) {
             return redirect()->route('project.application.deployment.index', [
                 'project_uuid' => $project->uuid,

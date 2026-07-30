@@ -8,8 +8,8 @@ Mode: `strategy`
 
 - GOSRAN is an independent fork of Coolify.
 - The current codebase inherits Coolify v4 functionality.
-- The first read-only Action Dashboard slice exists in source but still needs PHP and browser
-  verification.
+- The first read-only Action Dashboard slice exists in source and passed PHP 8.5 focused local Pest
+  and frontend build checks plus real local application browser assertions and screenshots.
 - No GOSRAN production image, installer, cloud, or release channel is available.
 
 ### Constraints

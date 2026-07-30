@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 uses(RefreshDatabase::class);
 
 beforeEach(function () {
-    InstanceSettings::create(['id' => 0, 'is_sponsorship_popup_enabled' => false]);
+    InstanceSettings::unguarded(fn () => InstanceSettings::create(['id' => 0, 'is_sponsorship_popup_enabled' => false]));
 
     $this->user = User::factory()->create([
         'id' => 0,
@@ -119,7 +119,7 @@ it('shows onboarding after first login', function () {
 });
 
 it('shows dashboard after skipping onboarding', function () {
-    $page = loginAndSkipBoarding();
+    $page = loginAndSkipBoarding(loginPage: visit('/login'));
 
     $page->assertSee('Dashboard')
         ->assertSee('Your self-hosted infrastructure.')
@@ -127,7 +127,7 @@ it('shows dashboard after skipping onboarding', function () {
 });
 
 it('shows all projects on dashboard', function () {
-    $page = loginAndSkipBoarding();
+    $page = loginAndSkipBoarding(loginPage: visit('/login'));
 
     $page->assertSee('Projects')
         ->assertSee('My first project')
@@ -140,7 +140,7 @@ it('shows all projects on dashboard', function () {
 });
 
 it('shows servers on dashboard', function () {
-    $page = loginAndSkipBoarding();
+    $page = loginAndSkipBoarding(loginPage: visit('/login'));
 
     $page->assertSee('Servers')
         ->assertSee('localhost')

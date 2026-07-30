@@ -1,7 +1,7 @@
 # GOSRAN Product Direction
 
 > 이 문서는 release 약속이 아니다. 고스란이 어떤 운영 문제를 어떤 원칙으로 풀 것인지,
-> 그리고 검증 전인 첫 milestone의 경계를 정리한다.
+> 그리고 부분적으로 local 검증된 첫 milestone의 남은 경계를 정리한다.
 
 ## The Operator's Question
 
@@ -26,8 +26,9 @@ Coolify upstream과 다시 합칠 수 있는 구조를 중요한 제품 제약�
 
 ## Experience Directions
 
-Action Dashboard의 첫 read-only slice는 구현 중이다. 나머지 항목은 구현 후보이며 아직
-제공을 약속하지 않는다.
+Action Dashboard의 첫 read-only slice는 source 구현과 focused local 검증을 마쳤지만
+release 대상 기능으로 닫히지 않았다. 나머지 항목은 구현 후보이며 아직 제공을 약속하지
+않는다.
 
 ### Action Dashboard
 
@@ -91,5 +92,19 @@ disk, connectivity, proxy, deployment capacity처럼 사고로 이어지기 쉬�
 - 실패 deployment 상세 link는 resource association과 authorization boundary를 독립적으로
   검증하기 전까지 제공하지 않는다.
 
-Source와 test contract는 추가됐지만 PHP dependency와 local runtime이 준비되지 않아
-실제 test와 browser 검증은 아직 수행하지 못했다. 현재 상태는 `Needs verification`이다.
+PHP 8.5.8 local runtime에서 Composer validate/install/dump-autoload와 package discovery,
+isolated Pint, 실제 `npm ci`/Vite build가 통과했다. `DashboardOperationsTest`는 7 tests,
+35 assertions, `DeploymentShowAuthorizationTest`는 3 tests, 8 assertions로 통과했다.
+
+Browser test helper가 `visit()` 호출을 test closure 안에서 실행하도록 정리하고
+`InstanceSettings` fixture를 기존 관례대로 생성한 뒤, 실제 application browser 검증도
+통과했다. PHP 8.5.8, Playwright 1.59.1, matching Chromium 147.0.7727.0, loopback Redis,
+temporary SQLite runtime에서 focused smoke는 실제 Dashboard 문구까지 1 test,
+2 assertions로 통과했고 screenshot
+`tests/Browser/Screenshots/it_shows_dashboard_after_skipping_onboarding.png`을 생성했다.
+전체 `tests/v4/Browser/DashboardTest.php`도 5 tests, 20 assertions로 통과했고 5 screenshots를
+생성했다.
+
+이 결과는 local application browser proof다. 실제 PR과 GitHub Actions, deployment,
+production은 아직 검증하지 않았다. 따라서 현재 상태는 `In progress · Needs verification`
+이며 `Available`로 표시하지 않는다.
